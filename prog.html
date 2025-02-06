@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Username Validation</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      input {
+        padding: 8px;
+        font-size: 16px;
+        width: 250px;
+      }
+      .error {
+        color: red;
+        font-size: 14px;
+        margin-top: 5px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Username Input Validation</h2>
+    <p>Allowed: Letters (A-Z, a-z) & Numbers (0-9). No Special Characters!</p>
+
+    <input type="text" id="username" placeholder="Enter your username" />
+    <p class="error" id="errorMessage">
+      ❌ Special characters are not allowed!
+    </p>
+
+    <script>
+      const inputField = document.getElementById("username");
+      const errorMessage = document.getElementById("errorMessage");
+
+      // Prevent special characters using keydown
+      inputField.addEventListener("keydown", function (event) {
+        const char = event.key;
+        const isValidChar =
+          /^[a-zA-Z0-9]$/.test(char) || event.key === "Backspace";
+
+        if (!isValidChar) {
+          event.preventDefault(); // Block special characters
+          errorMessage.style.display = "block"; // Show error message
+        } else {
+          errorMessage.style.display = "none"; // Hide error message
+        }
+      });
+
+      // Validate input on keyup
+      inputField.addEventListener("keyup", function () {
+        if (!/^[a-zA-Z0-9]*$/.test(inputField.value)) {
+          errorMessage.style.display = "block"; // Show error message if invalid input
+        } else {
+          errorMessage.style.display = "none"; // Hide error message if valid
+        }
+      });
+    </script>
+  </body>
+</html>
