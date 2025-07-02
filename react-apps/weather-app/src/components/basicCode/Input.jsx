@@ -1,4 +1,4 @@
-import { useInputReducer } from "../reducers/input.reducer";
+import { useInputReducer } from "../../reducers/input.reducer";
 import InputChild from "./InputChild";
 
 function Input() {
