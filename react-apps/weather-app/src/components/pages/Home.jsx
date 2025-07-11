@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { handelInput } from "../../redux/slices/weather.slice";
+import { getWeatherData, handelInput } from "../../redux/slices/weather.slice";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { getWeatherData } from "../../redux/service/api";
+
 function Home() {
   let dispatch = useDispatch();
   let navigate = useNavigate();
